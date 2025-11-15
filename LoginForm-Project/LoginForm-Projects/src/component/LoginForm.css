@@ -1,0 +1,50 @@
+   .container-h {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  max-width: 300px;
+}
+
+.naming {
+  font-size: 20px;
+}
+
+.email, .password {
+  padding: 6px 10px;
+  font-size: 14px;  
+  border-radius: 5px;
+  border-width: 1px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.hide {
+  margin: 0px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.password {
+  flex: 1;
+}
+
+.hidebtn {
+  margin-top: 2px;
+  padding: 8px 10px;
+}
+
+.btn {
+  display: flex;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+.click {
+  border-radius: 5px;
+  padding: 10px 10px;
+  background-color: rgb(94, 119, 220);
+  border: none;
+  color: aliceblue;
+}
