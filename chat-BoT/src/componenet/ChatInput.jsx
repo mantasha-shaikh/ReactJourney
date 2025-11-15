@@ -1,5 +1,6 @@
 import { useState} from 'react'
 import{Chatbot} from 'supersimpledev';
+  import dayjs from "dayjs";
 import spinnerLoad from '../assets/loading-spinner.gif'
 import './ChatInput.css'
 
@@ -28,6 +29,7 @@ import './ChatInput.css'
               message: inputText,
               sender: "user",
               id: crypto.randomUUID(),
+               time:dayjs().valueOf(),
             },
           ];
           setChatMessages(newChatMessages);
@@ -39,6 +41,7 @@ import './ChatInput.css'
               message: <img className="loading" src={spinnerLoad} />,
               sender: "robot",
               id: crypto.randomUUID(),
+               time:dayjs().valueOf(),
             },
           ]);
 
@@ -51,8 +54,10 @@ import './ChatInput.css'
               message: response,
               sender: "robot",
               id: crypto.randomUUID(),
+               time:dayjs().valueOf(),
             },
           ]);
+             setLoad(false);
         }
 
         function HandleBtn(event) {
@@ -60,7 +65,7 @@ import './ChatInput.css'
           else if (event.key === "Esc" || event.key === "Escape")
             setInputText("");
 
-          setLoad(false);
+       
         }
         return (
           <div className="searchbar">

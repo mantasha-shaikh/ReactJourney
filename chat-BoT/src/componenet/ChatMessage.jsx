@@ -1,7 +1,7 @@
 
       import robotProfile from '../assets/robot.png'
 import userProfile from '../assets/Anya.jpg'
-
+import dayjs from 'dayjs';
 
 import './ChatMessage.css'
        export function ChatMessage({ message, sender ,time}) {
@@ -26,7 +26,7 @@ import './ChatMessage.css'
               
             )}
             <div className="chat-Message">{message}
-              <p className='time'>{time}</p>
+              <p className='time'>{dayjs(time).format('HH:mm:ss')}</p>
             </div>
             {sender === "user" && (
               <img
