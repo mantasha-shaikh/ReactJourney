@@ -8,11 +8,11 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "mktest":"mkdir",
-    "rmtest":"rmdir"
-    
+    "mktest": "mkdir",
+    "rmtest": "rmdir"
   },
   "dependencies": {
+    "dayjs": "^1.11.19",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "supersimpledev": "^8.6.4"

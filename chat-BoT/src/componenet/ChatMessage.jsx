@@ -1,19 +1,32 @@
 
       import robotProfile from '../assets/robot.png'
-import userProfile from '../assets/user.png'
+import userProfile from '../assets/Anya.jpg'
+
+
 import './ChatMessage.css'
-       export function ChatMessage({ message, sender }) {
+       export function ChatMessage({ message, sender ,time}) {
+        // console.log(userProfile);
+     
+        
+
         return (
           <div className={sender === "user" ? "chat-user" : "chat-robot"}>
             {sender === "robot" && (
-              <img
+              <>
+               <img
                 src={robotProfile}
                 alt="Friendly cartoon robot avatar with rounded features representing the chatbot assistant"
                 width="50"
                 className="profile"
               />
+              
+              </>
+             
+              
             )}
-            <div className="chat-Message">{message}</div>
+            <div className="chat-Message">{message}
+              <div>{time}</div>
+            </div>
             {sender === "user" && (
               <img
                 src={userProfile}

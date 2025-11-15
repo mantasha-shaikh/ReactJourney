@@ -14,7 +14,13 @@
         align-items: start;
         margin-top: 20px;
 
+
         justify-content: end;
+      }
+      .profile{
+        height: 45px;
+        border-radius: 45px;
+        object-fit: cover;
       }
       .chat-robot {
         display: flex;

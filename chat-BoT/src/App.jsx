@@ -1,15 +1,28 @@
-import { useState} from "react";
+import { useState,useEffect} from "react";
 import { ChatInput } from "./componenet/ChatInput";
-
+import {Chatbot} from 'supersimpledev'
 import { ChatMessages } from "./componenet/ChatMessages";
 
 import "./App.css";
 
+
 function App() {
-  const [chatMessages, setChatMessages] = useState([]);
-  console.log(
-    chatMessages.length === 0 ? "welcom to chatbot project" : chatMessages
-  );
+    const [chatMessages, setChatMessages] = useState([]);
+  useEffect(()=>{
+   Chatbot.addResponses({
+    'goodbye':'have great day',
+    'great':"appriciate it  ",
+    'hi':'hello anya',
+    'give me Unique Id':(()=>{
+      return `sure here is unique Id${crypto.randomUUID()}`
+    })
+   })
+  },[])
+
+
+  // console.log(
+  //   chatMessages.length === 0 ? "welcom to chatbot project" : chatMessages
+  // );
   //
 
   return (
