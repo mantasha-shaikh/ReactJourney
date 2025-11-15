@@ -18,6 +18,7 @@ import './ChatMessage.css'
                 alt="Friendly cartoon robot avatar with rounded features representing the chatbot assistant"
                 width="50"
                 className="profile"
+
               />
               
               </>
@@ -25,7 +26,7 @@ import './ChatMessage.css'
               
             )}
             <div className="chat-Message">{message}
-              <div>{time}</div>
+              <p className='time'>{time}</p>
             </div>
             {sender === "user" && (
               <img

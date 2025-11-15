@@ -9,6 +9,11 @@
 
         overflow: hidden;
       }
+      .time{
+        font-size: 10px;
+        font-weight: lighter;
+       
+      }
       .chat-user {
         display: flex;
         align-items: start;
