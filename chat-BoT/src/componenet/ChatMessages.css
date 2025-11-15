@@ -1,0 +1,26 @@
+
+      .chat-Message {
+        background-color: aqua;
+        border-radius: 10px;
+        padding: 12px 20px;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-bottom: 20px;
+        max-width: 300px;
+      }
+      .profile {
+        width: 45px;
+      }
+      .update-container {
+        flex-grow: 1;
+        margin-top: 20px;
+        overflow: scroll;
+        scrollbar-width: none;
+      }
+      .welcome {
+        text-align: center;
+        font-size: 15px;
+      }
+      .loading {
+        width: 25px;
+      }

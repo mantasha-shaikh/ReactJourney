@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <style>
+    
+  </style>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      
+      function App() {
+        const [count, setCount] = React.useState(0);
+        const  containerRef = React.useRef()
+
+           function updater() {
+           setCount(count + 1);
+          
+
+
+          
+
+        }
+
+      function  autoClick(){
+
+
+   
+            setInterval(()=>{
+              const conatierElm =  containerRef.current;
+                if(conatierElm){
+                  conatierElm.click();
+                }
+            },1000)
+            
+        
+      }
+
+        function reseter(){
+            setCount(0)
+         
+        }
+
+      
+        return (
+          <>
+            
+            
+              <button onClick={updater}ref={containerRef} >counter  {count} {count ===1 ?'time':'times' } </button>
+
+                 <button onClick={reseter} >Reset </button>
+                  <button onClick={autoClick}  >autoClick </button>
+          </>
+        );
+      }
+
+      const container = document.querySelector(".js-container");
+      const root = ReactDOM.createRoot(container);
+      root.render(<App />);
+    </script>
+  </body>
+</html>

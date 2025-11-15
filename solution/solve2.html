@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+
+function LoginForm(){
+    return(
+        <>
+           <p>hello ,welcome to my webiste</p>
+            <div>
+                    <input placeholder="Email" type="Email"/> </div>
+            <div>  <input  placeholder="password" type="password"/>
+                </div>
+        
+            <button>login</button>
+            <button>sign</button>
+        </>
+    )
+}
+
+    function App (){
+        return (
+            <>
+         <LoginForm/>
+            </>
+        )
+    }
+
+      const container = document.querySelector('.js-container');
+      const root = ReactDOM.createRoot(container);
+      root.render(<App/>);
+
+   
+    </script>
+  </body>
+</html>

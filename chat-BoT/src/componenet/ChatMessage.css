@@ -1,0 +1,22 @@
+
+      .chatApp {
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+
+        overflow: hidden;
+      }
+      .chat-user {
+        display: flex;
+        align-items: start;
+        margin-top: 20px;
+
+        justify-content: end;
+      }
+      .chat-robot {
+        display: flex;
+        align-items: start;
+      }

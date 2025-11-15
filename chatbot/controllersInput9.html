@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/chatbot.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+    <script type="text/babel">
+      //value -> chnage text input value
+      function ChatInput({chatMessages,setChatMessages}) {
+        const [inputText, setInputText] = React.useState(""); // step 2
+
+        function saveInputText(event) {
+          //1nchange in react must be useed for get text but text changing in runn
+          //nsole.log(event.target.value)
+          setInputText(event.target.value);
+        }
+       
+
+        //due to this we get stcuk bewteen two set mesage solvee by lifting up sate mean go main brach to access all use sstate
+
+        function sendInputMess() {
+          //3 getting problem not acces setmessage because state handler and manager
+
+          setChatMessages([
+            ...chatMessages,
+            {
+              message: inputText,
+              sender: "user",
+              id: crypto.randomUUID(),
+
+            },
+          ]);
+         const response = Chatbot.getResponse(inputText)
+         console.log(response);
+         
+
+
+          setInputText('')
+
+        }
+        return (
+          <>
+            <input
+              placeholder="Send message to chatbot"
+              type="text"
+              size="30"
+              onChange={saveInputText}
+              value={inputText}
+            />
+            <button onClick={sendInputMess}>send</button>
+          </>
+        );
+      }
+
+      function ChatMessage({ message, sender }) {
+        return (
+          <div>
+            {sender === "robot" && (
+              <img
+                src="../images/robot.png"
+                alt="Friendly cartoon robot avatar with rounded features representing the chatbot assistant"
+                width="50"
+              />
+            )}
+            {message}
+            {sender === "user" && (
+              <img
+                src="../images/user.png"
+                alt="Default user profile avatar icon representing the chat participant"
+                width="50"
+              />
+            )}
+          </div>
+        );
+      }
+
+      function ChatMessages({chatMessages}) {
+        //desctructering inial and updater
+
+        return (
+          <>
+            
+            {chatMessages.map((data) => {
+              return (
+                <ChatMessage
+                  key={data.id}
+                  message={data.message}
+                  sender={data.sender}
+                />
+              );
+            })}
+          </>
+        );
+      }
+
+      function App() {
+            const [chatMessages, setChatMessages] = React.useState([
+          { id: "1", message: "hello chatbot", sender: "user" },
+          { id: "2", message: "Hello! How can I help you?", sender: "robot" },
+          { id: "3", message: "todays date", sender: "user" },
+          { id: "4", message: "Today is November 8", sender: "robot" },
+        ]);
+        return (
+          <>
+            <ChatInput        chatMessages={chatMessages}  setChatMessages={setChatMessages}  />
+            <ChatMessages     chatMessages={chatMessages}  setChatMessages={setChatMessages} />
+          </>
+        );
+      }
+
+      const container = document.querySelector(".js-container");
+      const root = ReactDOM.createRoot(container);
+      root.render(<App />);
+    </script>
+  </body>
+</html>

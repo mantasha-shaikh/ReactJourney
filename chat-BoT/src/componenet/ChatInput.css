@@ -1,0 +1,22 @@
+
+      .sendbtn {
+        background-color: rgb(10, 135, 94);
+        padding: 15px 20px;
+        margin-left: 10px;
+        border: none;
+        border-radius: 16px;
+        font-size: 20px;
+        color: aliceblue;
+        cursor: pointer;
+      }
+      .inputbox {
+        padding: 15px 20px;
+        border-radius: 10px;
+        border-width: 0.2px;
+        font-size: 15px;
+        flex-grow: 1;
+      }
+      .searchbar {
+        display: flex;
+        margin-bottom: 60px;
+      }

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <style>
+   .container-h {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  max-width: 300px;
+}
+
+.naming {
+  font-size: 20px;
+}
+
+.email, .password {
+  padding: 6px 10px;
+  font-size: 14px;  
+  border-radius: 5px;
+  border-width: 1px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.hide {
+  margin: 0px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.password {
+  flex: 1;
+}
+
+.hidebtn {
+  margin-top: 2px;
+  padding: 8px 10px;
+}
+
+.btn {
+  display: flex;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+.click {
+  border-radius: 5px;
+  padding: 10px 10px;
+  background-color: rgb(94, 119, 220);
+  border: none;
+  color: aliceblue;
+}
+
+  </style>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      function ButtonBG() {
+        const [isShow, setIsShow] = React.useState(false);
+        function performshow(){
+          setIsShow(!isShow)
+        }
+
+        return (
+          <div className='container-h'>
+            <p className='naming'>Hello ,Welcome to my Websites</p>
+            <input type="Email" placeholder='Email' className='email'/>
+            <div className='hide'>
+              <input  placeholder='password'  type={isShow?'text':'password'}    className='password' />
+              <div className='hidediv'>
+                 <button className='hidebtn' onClick={performshow}>{isShow?'show': 'hide'}</button>
+                </div>
+           
+              </div>
+            
+         
+            <div className='btn'>
+                 <button className='click login'>Login</button>
+            <button className='click Sign'>Sign Up</button>
+              </div>
+         
+          </div>
+        );
+      }
+
+      function App() {
+        return (
+          <>
+            <ButtonBG />
+          </>
+        );
+      }
+
+      const container = document.querySelector(".js-container");
+      const root = ReactDOM.createRoot(container);
+      root.render(<App />);
+    </script>
+  </body>
+</html>
