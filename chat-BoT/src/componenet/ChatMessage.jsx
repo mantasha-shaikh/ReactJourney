@@ -36,6 +36,7 @@ import './ChatMessage.css'
                 className="profile"
               />
             )}
+            
           </div>
         );
       }

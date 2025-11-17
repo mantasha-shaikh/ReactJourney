@@ -67,6 +67,10 @@ import './ChatInput.css'
 
        
         }
+
+        function ClearChatMessages(){
+          setChatMessages([])
+        }
         return (
           <div className="searchbar">
             <input
@@ -81,6 +85,7 @@ import './ChatInput.css'
             <button onClick={sendInputMess} className="sendbtn">
               send
             </button>
+            <button className=' sendbtn clear' onClick={ClearChatMessages} >clear</button>
           </div>
         );
       }

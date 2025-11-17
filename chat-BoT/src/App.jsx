@@ -7,17 +7,28 @@ import "./App.css";
 
 
 function App() {
-    const [chatMessages, setChatMessages] = useState([]);
+    const [chatMessages, setChatMessages] = useState(
+      JSON.parse(localStorage.getItem('message'))  ||[]
+    );
+
+
+
+    
   useEffect(()=>{
    Chatbot.addResponses({
     'goodbye':'have great day',
     'great':"appriciate it  ",
     'hi':'hello anya',
     'give me Unique Id':(()=>{
-      return `sure here is unique Id${crypto.randomUUID()}`
+      return `sure here is unique Id :${crypto.randomUUID()}`
     })
    })
   },[])
+  
+
+    useEffect(() => {
+    localStorage.setItem('message', JSON.stringify(chatMessages));
+  }, [chatMessages]);
 
 
   // console.log(
@@ -40,6 +51,7 @@ function App() {
         chatMessages={chatMessages}
         setChatMessages={setChatMessages}
       />
+      
     </div>
   );
 }
