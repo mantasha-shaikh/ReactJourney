@@ -15,6 +15,7 @@
     <script type="text/babel">
       function ShowInput(){ 
         const [inputText,setInputText] =React.useState('')
+        const [message,setMessage]=React.useState('')
         
      function updater(event){
 
@@ -23,12 +24,22 @@
     // console.log('here is chnages',inputText);
     
      
+       
      }
+
+  
+     function sendMessages(){
+setMessage(inputText)
+   setInputText(' ')
+     }
+
+  
 
        return (
         <>
-         <input type="text" onChange={updater} />
-         <p>Hello  {inputText}</p>
+         <input type="text" onChange={updater}   value={inputText}  />
+         <button onClick={sendMessages}>submit</button>
+      <p>HELLO! {message}</p>
         </>
        )
 
