@@ -19,32 +19,80 @@
 
     <script type="text/babel">
       function ChatInput() {
+        function SendMessage(){
+          console.log("send message");
+          
+        }
         return (
           <div>
-            <input placeholder="write say hello" type="text"  size='30px'/>
-            <button>submit</button>
+            <input placeholder="write say hello" type="text" size="30px" />
+            <button onClick={SendMessage}>submit</button>
           </div>
         );
       }
 
-      function ChatMessage(props) {
-        console.log(props.message);
-        
+      function ChatMessage({ message, sender }) {
+        // console.log(props.message);
+        // const message=props.message
+        //   const sender=props.sender
+        //   const {message,sender}=props
         return (
-          <div >
-            <p>{props.message}</p>
-            <img src="../images/user.png" alt="" height="50px" />
-             <p>hello user !</p>
-            <img src="../images/robot.png" alt=""  height="50px"/>
-          </div>
+          <>
+            {sender === "user" ? (
+              <img src="../images/user.png" alt="" height="50px" />
+            ) : (
+              <img src="../images/robot.png" alt="" height="50px" />
+            )}
+            <p>{message}</p>
+          </>
         );
       }
 
       function App() {
+        const [chatMessages,setChatMessages]=React.useState()
+        const ChatMessages = [
+          {
+            id: 1,
+            message: "Hello Robot",
+            sender: "user",
+          },
+          {
+            id: 2,
+            message: "How can i help you",
+            sender: "robot",
+          },
+          {
+            id: 3,
+            message: "roll dice",
+            sender: "user",
+          },
+          {
+            id: 4,
+            message: "date",
+            sender: "user",
+          },
+          {
+            id: 5,
+            message:
+              "Sorry, I didn't quite understand that. Currently, I only know how to flip a coin, roll a dice, or get today's date. Let me know how I can help!",
+            sender: "robot",
+          },
+        ];
+
         return (
           <div>
-            <ChatInput   />
-            <ChatMessage message="Hello Robot" />
+            <ChatInput />
+            {ChatMessages.map((chat, index) => {
+              return (
+                <div key={index}>
+                  <ChatMessage
+                    message={chat.message}
+                    sender={chat.sender}
+                    key={chat.id}
+                  />
+                </div>
+              );
+            })}
           </div>
         );
       }
