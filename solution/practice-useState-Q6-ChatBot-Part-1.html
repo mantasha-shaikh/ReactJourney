@@ -130,7 +130,7 @@
           setInputText(event.target.value);
         }
 
-        function SendMessage() {
+       async function  SendMessage () {
           if (!inputText.trim()) {
             return;
           }
@@ -146,7 +146,16 @@
 
           setChatMessages(newChatMessages);
 
-          const response = Chatbot.getResponse(inputText);
+setChatMessages([
+  ...newChatMessages,{
+    message:"Loading..",
+    sender:"robot",
+    id:crypto.randomUUID(),
+  }
+])
+
+
+          const response =  await Chatbot.getResponseAsync(inputText);
 
           setChatMessages([
             ...newChatMessages,
@@ -213,12 +222,21 @@
       }
 
       function ChatMessages({ chatMessages }) {
+               const messagesContainerRef= React.useRef(null) 
         React.useEffect(()=>{
-          console.log("useeffect mean  run after  some code created or updated  ");
-               console.log("useeffect  have params array[ ] controls when useeffct run sand only once run, after compnent created   ");
-        })
+ 
+       const messagecontainerElm = messagesContainerRef.current
+       if(messagecontainerElm){
+        messagecontainerElm.scrollTop = messagecontainerElm.scrollHeight
+       }
+      //  console.log(messagesContainerRef.current);
+       
+          
+          // console.log("useeffect mean  run after  some code created or updated  ");
+          //      console.log("useeffect  have params array[ ] controls when useeffct run sand only once run, after compnent created   ");
+        },[chatMessages])
         return (
-          <div className="message-container">
+          <div className="message-container" ref={messagesContainerRef}>
             {chatMessages.map((chat) => {
               return (
                 <ChatMessage
