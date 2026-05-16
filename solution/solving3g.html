@@ -33,12 +33,25 @@ setMessage(inputText)
    setInputText(' ')
      }
 
+
+     function example(){
+      const name = 'mantasha'
+      setInputText(name)
+      setMessage(name)
+     }
   
 
+
+     function ClearALL(){
+      setInputText("")
+      setMessage("")
+     }
        return (
         <>
          <input type="text" onChange={updater}   value={inputText}  />
          <button onClick={sendMessages}>submit</button>
+         <button onClick={example}>example</button>
+         <button onClick={ClearALL}>Reset</button>
       <p>HELLO! {message}</p>
         </>
        )

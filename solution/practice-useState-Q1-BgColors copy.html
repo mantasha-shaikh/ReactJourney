@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script>
+      // const productCost =10+2*8
+      //     console.log(productCost);
+      // console.log(dayjs().format('MMM D'));
+    </script>
+    <script src="https://unpkg.com/supersimpledev@8.6.4/dayjs.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+    <script type="text/babel">
+
+            function  ColorsChangerBg(){
+                const [colors,setColors]=React.useState("white")
+
+              
+              function ChangeColors (){
+               
+                     if(colors ==='white'){
+                      setColors("black")
+                     }
+                     else if(colors ==='black'){
+                      setColors("pink")
+                     }
+                    else  if(colors ==='pink'){
+                      setColors("blue")
+                     }
+                      else if
+                      (colors ==='blue'){
+                      setColors("Red")
+                     }
+                     else{
+setColors("white")
+                     }
+          
+                
+            
+
+              }
+      return(
+          <div style={{backgroundColor:colors,height:"100vh"}} >
+
+          <button onClick={ChangeColors}>change colors</button>
+
+          </div>
+      )
+            }
+
+
+           function App (){
+              return(
+                  <div>
+                      <ColorsChangerBg/>
+
+                      </div>
+              )
+           }
+
+
+
+            const container = document.querySelector('.js-container');
+             const root =ReactDOM.createRoot(container)
+             root.render(<App/>)
+    </script>
+  </body>
+</html>
