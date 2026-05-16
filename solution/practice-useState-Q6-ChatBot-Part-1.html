@@ -13,6 +13,8 @@
     </script>
     <script src="https://unpkg.com/supersimpledev@8.6.4/dayjs.js"></script>
     <script src="https://unpkg.com/supersimpledev/react.js"></script>
+<script src="https://unpkg.com/supersimpledev/chatbot.js"></script>
+
     <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
 
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
@@ -20,21 +22,16 @@
     <script type="text/babel">
       function ChatInput({chatMessages,setChatMessages}) {
         const [inputText,setInputText]=React.useState("")
-        function SendMessage(){
-        //  chatMessages.push({
-        //   message:'test',
-        //   sender:'user',
-        //   id:crypto.randomUUID()
 
-        //  })
-        // setChatMessages([
-        //   ...chatMessages,
-        //   {
-        //     message:'test',
-        //   sender:'user',
-        //   id:crypto.randomUUID() 
-        //   }
-        // ])
+ function saveInputText(event){
+          setInputText(event.target.value)
+          // console.log(event.target.value);
+
+          
+        }
+
+        function SendMessage(){
+
          setChatMessages([
           ...chatMessages,
           {
@@ -43,22 +40,32 @@
           id:crypto.randomUUID() 
           }
         ])
-         console.log(chatMessages);
-         
-          
-        }
- setInputText('')
-      
-        function saveInputText(event){
-          setInputText(event.target.value)
-          // console.log(event.target.value);
 
-          
+         const response =Chatbot.getResponse(inputText)
+
+ setChatMessages([
+          ...chatMessages,
+          {
+            message:response,
+          sender:'robot',
+          id:crypto.randomUUID() 
+          }
+        ])
+
+
+         console.log(response);
+         
+          console.log(chatMessages);
+         
+           setInputText('')
         }
+
+      
+       
          
         return (
           <div>
-            <input placeholder="write say hello" type="text" size="30px" onChange={saveInputText}/>
+            <input placeholder="write say hello" type="text" size="30px" onChange={saveInputText} value={inputText}/>
             <button onClick={SendMessage}>submit</button>
           </div>
         );
@@ -66,6 +73,7 @@
 
       function ChatMessage({ message, sender }) {
 
+          
         return (
           <>
             {sender === "user" ? (
@@ -77,6 +85,27 @@
           </>
         );
       }
+
+function ChatMessages({chatMessages}){
+return(
+  <>{
+      chatMessages.map((chat, index) => {
+              return (
+                <div key={index}>
+                  <ChatMessage
+                    message={chat.message}
+                    sender={chat.sender}
+                    key={chat.id}
+                  />
+                </div>
+              );
+            })
+  }
+  </>
+)
+}
+
+
 
       function App() {
         const [chatMessages,setChatMessages]=React.useState([
@@ -113,17 +142,7 @@
         return (
           <div>
             <ChatInput chatMessages={chatMessages} setChatMessages={setChatMessages} />
-            {chatMessages.map((chat, index) => {
-              return (
-                <div key={index}>
-                  <ChatMessage
-                    message={chat.message}
-                    sender={chat.sender}
-                    key={chat.id}
-                  />
-                </div>
-              );
-            })}
+        <ChatMessages chatMessages={chatMessages}/>
           </div>
         );
       }
