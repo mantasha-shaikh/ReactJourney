@@ -3,7 +3,7 @@ import Header from "../../Components/Header"
 const OrdersPage = () => {
   return (
     <div>
-       <title>Order Page Page</title>
+             <link rel="icon" type="image/svg+xml" href="orders-favicon.png" />
   <Header/>
 
     <div className="orders-page">

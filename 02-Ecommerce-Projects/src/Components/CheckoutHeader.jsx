@@ -1,20 +1,20 @@
 import "./Checkout-header.css"
-import { Link } from "react-router"
+import { NavLink } from "react-router"
 const CheckoutHeader = () => {
   return (
     <div>
            <div className="checkout-header">
       <div className="header-content">
         <div className="checkout-header-left-section">
-          <Link href="/">
+          <NavLink to="/">
             <img className="logo" src="images/logo.png" />
             <img className="mobile-logo" src="images/mobile-logo.png" />
-          </Link>
+          </NavLink>
         </div>
 
         <div className="checkout-header-middle-section">
-          Checkout (<Link className="return-to-home-link"
-            href="/">3 items</Link>)
+          Checkout (<NavLink className="return-to-home-link"
+            to="/">3 items</NavLink>)
         </div>
 
         <div className="checkout-header-right-section">
