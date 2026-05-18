@@ -1,7 +1,7 @@
 
 import "./Checkout.css"
 import "./HomePage.css"
-import CheckoutHeader from "../Components/CheckoutHeader"
+import CheckoutHeader from "../../Components/CheckoutHeader"
 const CheckoutPage = () => {
   return (
     <div>

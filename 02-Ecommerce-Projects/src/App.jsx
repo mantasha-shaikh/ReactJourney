@@ -1,8 +1,8 @@
 import {Routes,Route} from 'react-router'
-import CheckoutPage from './pages/CheckoutPage'
-import OrdersPage from './pages/OrdersPage'
-import TrackingPage from './pages/TrackingPage'
-import { HomePage } from './pages/HomePage'
+import CheckoutPage from './pages/CheckoutPage/CheckoutPage'
+import OrdersPage from './pages/OrdersPage/OrdersPage'
+import TrackingPage from './pages/TrackingPage/TrackingPage'
+import { HomePage } from './pages/HomePage/HomePage'
 import './App.css'
 
 function App() {
