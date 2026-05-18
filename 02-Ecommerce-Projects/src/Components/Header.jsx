@@ -1,9 +1,9 @@
-import "./Header.css"
-import { NavLink } from "react-router"
-import CartIcon from '../assets/images/icons/';
-import SearchIcon from '../assets/images/icons/search-icon.png';
-import LogoWhite from '../assets/images/logo-white.png';
-import MobileLogoWhite from '../assets/images/mobile-logo-white.png';
+import "./Header.css";
+import { NavLink } from "react-router";
+import CartIcon from "../assets/images/icons/cart-icon.png";
+import SearchIcon from "../assets/images/icons/search-icon.png";
+import LogoWhite from "/images/logo-white.png";
+import MobileLogoWhite from "/images/mobile-logo-white.png";
 
 
 const Header = () => {
@@ -34,8 +34,8 @@ const Header = () => {
           <span className="orders-text">Orders</span>
         </NavLink>
 
-       < NavLink className="cart-link header-link" to="/checkout">
-          <img className={CartIcon} src="./" />
+        <NavLink className="cart-link header-link" to="/checkout">
+          <img className="cart-icon" src={CartIcon} />
           <div className="cart-quantity">3</div>
           <div className="cart-text">Cart</div>
         </NavLink>
