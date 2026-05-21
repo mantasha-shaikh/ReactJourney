@@ -10,7 +10,14 @@ export function HomePage() {
 axios.get("http://localhost:3000/api/products")
   .then((response)=>{
     setProducts(response.data)
-  // console.log(response.data);
+
+  })
+
+
+  axios.get("http://localhost:3000/api/cart-items")
+  .then((response)=>{
+    console.log(response.data);
+    
   })
   },[])
   
