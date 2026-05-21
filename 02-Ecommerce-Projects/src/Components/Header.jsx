@@ -6,7 +6,11 @@ import LogoWhite from "/images/logo-white.png";
 import MobileLogoWhite from "/images/mobile-logo-white.png";
 
 
-const Header = () => {
+const Header = ({cart}) => {
+let totalQuantity =0
+cart.forEach((cartItems)=>{
+  return totalQuantity += cartItems.quantity
+})
     
   return (
     <div>
@@ -34,11 +38,14 @@ const Header = () => {
           <span className="orders-text">Orders</span>
         </NavLink>
 
-        <NavLink className="cart-link header-link" to="/checkout">
+     
+             <NavLink   className="cart-link header-link" to="/checkout">
           <img className="cart-icon" src={CartIcon} />
-          <div className="cart-quantity">3</div>
+          <div className="cart-quantity">{totalQuantity}</div>
           <div className="cart-text">Cart</div>
         </NavLink>
+       
+       
       </div>
     </div>
     </div>

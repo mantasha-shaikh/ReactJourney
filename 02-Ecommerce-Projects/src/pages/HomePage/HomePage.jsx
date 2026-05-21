@@ -1,39 +1,28 @@
 import "./HomePage.css";
-import axios from "axios"
+import axios from "axios";
 import Header from "../../Components/Header";
-import { useEffect ,useState} from "react";
-// import { products } from "../../../../03-Starting-Files-Ecommerec/data/products";
+import { useEffect, useState } from "react";
+
 import CheckmarkIcon from "../../assets/images/icons/checkmark.png";
 export function HomePage() {
-  const [products,setProducts]=useState([])
-  useEffect(()=>{
-axios.get("http://localhost:3000/api/products")
-  .then((response)=>{
-    setProducts(response.data)
 
-  })
+  const [products, setProducts] = useState([]);
+  const [cart,setCart] =useState([])
+  useEffect(() => {
+    axios.get("http://localhost:3000/api/products").then((response) => {
+      setProducts(response.data);
+    });
 
 
-  axios.get("http://localhost:3000/api/cart-items")
-  .then((response)=>{
-    console.log(response.data);
-    
-  })
-  },[])
-  
-
-  
-   
-   
-      
-   
-    // console.log(response.json());
-    
-    // console.log(response);
+    axios.get("http://localhost:3000/api/cart-items").then((response) => {
+      setCart(response.data)
+      // console.log(response.data);
+    });
+  }, []);
 
   return (
     <>
-      <Header />
+      <Header cart={cart}/>
 
       <div className="home-page">
         <div className="products-grid">
@@ -51,14 +40,16 @@ axios.get("http://localhost:3000/api/products")
                 <div className="product-rating-container">
                   <img
                     className="product-rating-stars"
-                    src={`images/ratings/rating-${data.rating.stars *10}.png`}
+                    src={`images/ratings/rating-${data.rating.stars * 10}.png`}
                   />
                   <div className="product-rating-count link-primary">
                     {data.rating.count}
                   </div>
                 </div>
 
-                <div className="product-price">{(data.priceCents /100).toFixed(2)}</div>
+                <div className="product-price">
+                  {(data.priceCents / 100).toFixed(2)}
+                </div>
 
                 <div className="product-quantity-container">
                   <select>
