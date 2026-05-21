@@ -1,13 +1,17 @@
 import "./HomePage.css";
 import axios from "axios"
 import Header from "../../Components/Header";
+import { useEffect } from "react";
 import { products } from "../../../../03-Starting-Files-Ecommerec/data/products";
 import CheckmarkIcon from "../../assets/images/icons/checkmark.png";
 export function HomePage() {
-  axios.get("http://localhost:3000/api/products")
+  useEffect(()=>{
+axios.get("http://localhost:3000/api/products")
   .then((response)=>{
   console.log(response.data);
   })
+  },[])
+  
 
   
    
